@@ -4,7 +4,7 @@ import torch, torch.nn as nn
 from joblib import Parallel, delayed
 
 N = 4096
-T = 60
+T = 128
 n = 6
 
 def make_random_graphs(batch_size, p_edge):
@@ -79,7 +79,7 @@ device = 'cuda'
 model = Model().to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-1)
 scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
-batch_size = 2
+batch_size = 1
 for epoch in range(1, 41):
   Temp = 1
   ttl_correctness_loss, ttl_entropy_loss = 0, 0
